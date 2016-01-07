@@ -9,20 +9,15 @@ import android.widget.TextView;
 import com.jakewharton.rxbinding.view.RxView;
 import com.mrvilkaman.neuralnetwork.R;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFragment;
-import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter.RecognizePresenter;
+import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter.TrainingPresenter;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter.RecognizePresenterImpl;
-import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.view.RecognizeView;
 import com.mrvilkaman.neuralnetwork.presentationlayer.views.NetImageView;
 import com.mrvilkaman.neuralnetwork.presentationlayer.views.TextGridView;
 
 import butterknife.Bind;
 import rx.Observable;
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.observers.Observers;
 
-public class RecognizeFragment extends BaseFragment<RecognizePresenter> implements RecognizeView {
+public class TrainingFragment extends BaseFragment<TrainingPresenter> implements TrainingView {
 
 	private static final String EXTRA_CHAR = "EXTRA_CHAR";
 
@@ -40,8 +35,8 @@ public class RecognizeFragment extends BaseFragment<RecognizePresenter> implemen
 	TextGridView gridWeight;
 	private char currentChar;
 
-	public static RecognizeFragment open(char ch) {
-		RecognizeFragment recognizeFragment = new RecognizeFragment();
+	public static TrainingFragment open(char ch) {
+		TrainingFragment recognizeFragment = new TrainingFragment();
 		Bundle args = new Bundle();
 		args.putChar(EXTRA_CHAR,ch);
 		recognizeFragment.setArguments(args);
@@ -56,7 +51,7 @@ public class RecognizeFragment extends BaseFragment<RecognizePresenter> implemen
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.layout_recognize;
+		return R.layout.layout_training;
 	}
 
 	@Override
@@ -86,7 +81,7 @@ public class RecognizeFragment extends BaseFragment<RecognizePresenter> implemen
 	}
 
 	@Override
-	protected RecognizePresenter newPresenter() {
+	protected TrainingPresenter newPresenter() {
 		return new RecognizePresenterImpl();
 	}
 

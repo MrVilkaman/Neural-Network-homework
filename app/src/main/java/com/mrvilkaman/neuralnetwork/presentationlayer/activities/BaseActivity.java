@@ -87,6 +87,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 		BaseFragment current = (BaseFragment) supportFragmentManager.findFragmentById(getContainerID());
 		if (current != null && current.getPreviousFragment() != null) {
 			supportFragmentManager.popBackStack(current.getPreviousFragment(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+			if (hasChild()) {
+				getToolbar().showBackIcon();
+			}else{
+				getToolbar().showHomeIcon();
+			}
 		} else {
 			exit();
 		}
@@ -104,6 +109,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 			if (!(hasOldFragment && isAlreadyLoaded)) {
 				if (isRoot) {
 					clearBackStack();
+					getToolbar().showHomeIcon();
+				}else{
+					getToolbar().showBackIcon();
 				}
 				FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 				boolean b = backStack || isRoot;

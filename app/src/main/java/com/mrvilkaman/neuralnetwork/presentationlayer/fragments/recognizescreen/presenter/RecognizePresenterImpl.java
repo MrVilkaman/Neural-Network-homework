@@ -4,7 +4,7 @@ import com.mrvilkaman.neuralnetwork.datalayer.Constants;
 import com.mrvilkaman.neuralnetwork.datalayer.entity.Neuron;
 import com.mrvilkaman.neuralnetwork.domainlayer.Converters;
 
-public class RecognizePresenterImpl extends RecognizePresenter {
+public class RecognizePresenterImpl extends TrainingPresenter {
 
 	private Neuron currentNeuron;
 	private int[][] lastIntMatrix;

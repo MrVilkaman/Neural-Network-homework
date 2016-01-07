@@ -32,7 +32,9 @@ public abstract class BasePresenter<V extends BaseView> {
         subscriptions.add(observable);
     }
 
-    protected abstract void onViewAttached();
+    protected void onViewAttached(){
+
+    }
 
     protected void onViewDetached() {
     }

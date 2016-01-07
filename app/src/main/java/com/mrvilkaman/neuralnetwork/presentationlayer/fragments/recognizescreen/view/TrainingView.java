@@ -2,7 +2,7 @@ package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen
 
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseView;
 
-public interface RecognizeView extends BaseView {
+public interface TrainingView extends BaseView {
 
 	boolean[][] getCellMatrix();
 	void drawWeight(int[][] weight);

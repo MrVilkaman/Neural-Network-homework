@@ -5,4 +5,8 @@
 	<string name="recognise_false">Не верно</string>
 	<string name="res_false">Не верно (%d)</string>
 	<string name="res_true">Верно (%d)</string>
+	<string name="menu_training">Обучение</string>
+	<string name="dialog_new">Новый</string>
+	<string name="input_hint">Символ</string>
+	<string name="input_prefill"/>
 </resources>
