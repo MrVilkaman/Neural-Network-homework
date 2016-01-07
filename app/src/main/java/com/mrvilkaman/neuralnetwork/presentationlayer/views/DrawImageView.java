@@ -14,9 +14,9 @@ public class DrawImageView extends View {
 	private int numColumns, numRows;
 	private int cellWidth, cellHeight;
 	private Paint blackPaint = new Paint();
-	private boolean[][] cellChecked;
+	private boolean[][] matrix;
 
-	private boolean black;
+	private boolean black = true;
 
 	public DrawImageView(Context context) {
 		super(context);
@@ -35,8 +35,6 @@ public class DrawImageView extends View {
 
 	private void init() {
 		blackPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-		setNumColumns(10);
-		setNumRows(10);
 	}
 
 	public void setNumColumns(int numColumns) {
@@ -70,7 +68,7 @@ public class DrawImageView extends View {
 		cellWidth = getWidth() / numColumns;
 		cellHeight = getHeight() / numRows;
 
-		cellChecked = new boolean[numColumns][numRows];
+		matrix = new boolean[numColumns][numRows];
 
 		invalidate();
 	}
@@ -89,7 +87,7 @@ public class DrawImageView extends View {
 
 		for (int i = 0; i < numColumns; i++) {
 			for (int j = 0; j < numRows; j++) {
-				if (cellChecked[i][j]) {
+				if (matrix[i][j]) {
 					canvas.drawRect(i * cellWidth, j * cellHeight, (i + 1) * cellWidth, (j + 1) * cellHeight, blackPaint);
 				}
 			}
@@ -121,11 +119,11 @@ public class DrawImageView extends View {
 	}
 
 	private void touchMove(int x, int y) {
-		if((x < cellChecked.length) && (y < cellChecked[x].length) && isEnabled()){
+		if((x < matrix.length) && (y < matrix[x].length) && isEnabled()){
 
-			boolean needUpdate = cellChecked[x][y] != isBlack();
+			boolean needUpdate = matrix[x][y] != isBlack();
 			if (needUpdate) {
-				cellChecked[x][y] = isBlack();
+				matrix[x][y] = isBlack();
 				invalidate();
 			}
 		}
@@ -141,5 +139,9 @@ public class DrawImageView extends View {
 
 	public boolean isBlack() {
 		return black;
+	}
+
+	public boolean[][] getCellMatrix() {
+		return matrix;
 	}
 }

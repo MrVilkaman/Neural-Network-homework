@@ -1,10 +1,9 @@
-package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.view;/**
- * Created by Zahar on 07.01.2016.
- */
+package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.view;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.mrvilkaman.neuralnetwork.R;
@@ -12,6 +11,8 @@ import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFr
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter.RecognizePresenter;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter.RecognizePresenterImpl;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.view.RecognizeView;
+import com.mrvilkaman.neuralnetwork.presentationlayer.views.NetImageView;
+import com.mrvilkaman.neuralnetwork.presentationlayer.views.TextGridView;
 
 import butterknife.Bind;
 import rx.Observable;
@@ -28,8 +29,12 @@ public class RecognizeFragment extends BaseFragment<RecognizePresenter> implemen
 	Button recognise;
 	@Bind(R.id.recognise_false)
 	Button recogniseFalse;
+	@Bind(R.id.text_result)
+	TextView textResults;
 	@Bind(R.id.net_image_view)
-	View netImageView;
+	NetImageView netImageView;
+	@Bind(R.id.draw_weight)
+	TextGridView gridWeight;
 
 	public static RecognizeFragment open() {
 		return new RecognizeFragment();
@@ -68,5 +73,20 @@ public class RecognizeFragment extends BaseFragment<RecognizePresenter> implemen
 	@Override
 	protected RecognizePresenter newPresenter() {
 		return new RecognizePresenterImpl();
+	}
+
+	@Override
+	public boolean[][] getCellMatrix() {
+		return netImageView.getCellMatrix();
+	}
+
+	@Override
+	public void drawWeight(int[][] weight) {
+		gridWeight.setNewValues(weight);
+	}
+
+	@Override
+	public void showRecogniseResult(boolean rez, int sum) {
+		textResults.setText(getString((rez ? R.string.res_true : R.string.res_false), sum));
 	}
 }

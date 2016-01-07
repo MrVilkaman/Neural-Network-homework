@@ -4,4 +4,7 @@ import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseVi
 
 public interface RecognizeView extends BaseView {
 
+	boolean[][] getCellMatrix();
+	void drawWeight(int[][] weight);
+	void showRecogniseResult(boolean rez, int sum);
 }

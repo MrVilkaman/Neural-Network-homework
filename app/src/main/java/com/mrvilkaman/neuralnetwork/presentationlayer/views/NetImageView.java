@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.mrvilkaman.neuralnetwork.R;
+import com.mrvilkaman.neuralnetwork.datalayer.Constants;
 import com.mrvilkaman.neuralnetwork.presentationlayer.utils.Utils;
 
 import butterknife.Bind;
@@ -40,6 +41,9 @@ public class NetImageView extends LinearLayout {
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		inflater.inflate(R.layout.view_net_image, this, true);
 		ButterKnife.bind(this,this);
+
+		drawImageView.setNumColumns(Constants.SIZE);
+		drawImageView.setNumRows(Constants.SIZE);
 
 		checkAttrs(attrs);
 
@@ -83,5 +87,9 @@ public class NetImageView extends LinearLayout {
 		for (int i = 0; i < viewGroup.getChildCount(); i++) {
 			viewGroup.getChildAt(i).setEnabled(enabled);
 		}
+	}
+
+	public boolean[][] getCellMatrix(){
+		return drawImageView.getCellMatrix();
 	}
 }

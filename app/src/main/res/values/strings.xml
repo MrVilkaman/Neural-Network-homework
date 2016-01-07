@@ -3,4 +3,6 @@
 	<string name="recognise">Распознать</string>
 	<string name="recognise_true">Верно</string>
 	<string name="recognise_false">Не верно</string>
+	<string name="res_false">Не верно (%d)</string>
+	<string name="res_true">Верно (%d)</string>
 </resources>

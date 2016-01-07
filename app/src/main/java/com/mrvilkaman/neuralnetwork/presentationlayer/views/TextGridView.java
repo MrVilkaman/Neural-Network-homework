@@ -18,7 +18,6 @@ public class TextGridView extends View {
 	private Paint blackPaint = new Paint();
 	private int[][] cellChecked;
 
-	private boolean black;
 
 	public TextGridView(Context context) {
 		super(context);
@@ -73,16 +72,11 @@ public class TextGridView extends View {
 		cellHeight = getHeight() / numRows;
 
 		cellChecked = new int[numColumns][numRows];
+		invalidate();
+	}
 
-
-		Random random = new Random();
-		for (int i = 0; i < numColumns; i++) {
-			for (int j = 0; j < numRows; j++) {
-				cellChecked[i][j] = random.nextInt(3)-1;
-
-			}
-		}
-
+	public void setNewValues(int[][] cellChecked){
+		this.cellChecked = cellChecked;
 		invalidate();
 	}
 
