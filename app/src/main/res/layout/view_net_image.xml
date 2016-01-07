@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			  android:orientation="horizontal"
-			  android:layout_margin="8dp"
 			  android:layout_width="match_parent"
-			  android:layout_height="match_parent">
+			  android:layout_height="match_parent"
+			  android:layout_margin="8dp"
+			  android:orientation="horizontal">
 
-		<RadioGroup
-			android:id="@+id/color_group"
-			android:background="#888"
-			android:orientation="vertical"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content">
+	<RadioGroup
+		android:id="@+id/color_group"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="#888"
+		android:orientation="vertical">
 
-			<RadioButton
-				android:id="@+id/color_black"
-				style="@style/color_btn"
-				android:background="#000"/>
+		<RadioButton
+			android:id="@+id/color_black"
+			style="@style/color_btn"
+			android:background="#000"/>
 
-			<RadioButton
-				android:background="#fff"
-				android:id="@+id/color_white"
-				style="@style/color_btn"/>
-		</RadioGroup>
+		<RadioButton
+			android:id="@+id/color_white"
+			style="@style/color_btn"
+			android:background="#fff"/>
+	</RadioGroup>
 
-		<com.mrvilkaman.neuralnetwork.presentationlayer.views.DrawImageView
-			android:id="@+id/draw"
-			android:layout_marginLeft="8dp"
-			android:layout_marginRight="8dp"
-			android:layout_weight="1"
-			android:layout_width="200dp"
-			android:layout_height="200dp"/>
+	<Space style="@style/Aggregator"/>
 
-		<Button
-			android:id="@+id/clear_btn"
-			android:text="X"
-			android:layout_width="@dimen/grid_clear_btn_size"
-			android:layout_height="@dimen/grid_clear_btn_size"/>
-	</LinearLayout>
+	<com.mrvilkaman.neuralnetwork.presentationlayer.views.DrawImageView
+		android:id="@+id/draw"
+		android:layout_width="@dimen/grid_size"
+		android:layout_height="@dimen/grid_size"
+		android:layout_marginLeft="8dp"
+		android:layout_marginRight="8dp"/>
+
+	<Space style="@style/Aggregator"/>
+
+	<Button
+		android:id="@+id/clear_btn"
+		android:layout_width="@dimen/grid_clear_btn_size"
+		android:layout_height="@dimen/grid_clear_btn_size"
+		android:text="X"/>
+</LinearLayout>

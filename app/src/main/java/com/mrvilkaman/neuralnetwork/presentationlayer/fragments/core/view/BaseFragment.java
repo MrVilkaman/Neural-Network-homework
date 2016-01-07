@@ -11,7 +11,7 @@ import com.mrvilkaman.neuralnetwork.datalayer.IStore;
 import com.mrvilkaman.neuralnetwork.presentationlayer.activities.BaseActivityPresenter;
 import com.mrvilkaman.neuralnetwork.presentationlayer.activities.BaseActivityView;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.presenter.BasePresenter;
-import com.mrvilkaman.neuralnetwork.presentationlayer.stubs.Toolbar;
+import com.mrvilkaman.neuralnetwork.presentationlayer.toolbar.IToolbar;
 import com.mrvilkaman.neuralnetwork.presentationlayer.utils.Utils;
 
 import butterknife.ButterKnife;
@@ -111,7 +111,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     }
 
     @Override
-    public Toolbar getToolbar() {
+    public IToolbar getToolbar() {
         return getActivityView().getToolbar();
     }
 

@@ -1,6 +1,7 @@
 package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.view;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,6 +24,8 @@ import rx.observers.Observers;
 
 public class RecognizeFragment extends BaseFragment<RecognizePresenter> implements RecognizeView {
 
+	private static final String EXTRA_CHAR = "EXTRA_CHAR";
+
 	@Bind(R.id.recognise_true)
 	Button recogniseTrue;
 	@Bind(R.id.recognise)
@@ -35,9 +38,20 @@ public class RecognizeFragment extends BaseFragment<RecognizePresenter> implemen
 	NetImageView netImageView;
 	@Bind(R.id.draw_weight)
 	TextGridView gridWeight;
+	private char currentChar;
 
-	public static RecognizeFragment open() {
-		return new RecognizeFragment();
+	public static RecognizeFragment open(char ch) {
+		RecognizeFragment recognizeFragment = new RecognizeFragment();
+		Bundle args = new Bundle();
+		args.putChar(EXTRA_CHAR,ch);
+		recognizeFragment.setArguments(args);
+		return recognizeFragment;
+	}
+
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		currentChar = getArguments().getChar(EXTRA_CHAR);
 	}
 
 	@Override
@@ -47,6 +61,7 @@ public class RecognizeFragment extends BaseFragment<RecognizePresenter> implemen
 
 	@Override
 	protected void onCreateView(View view, Bundle savedInstanceState) {
+		getToolbar().setText(String.valueOf(currentChar));
 		getPresenter().subscribe(
 				RxView.clicks(recognise)
 						.doOnNext(act -> getPresenter().clickRecognise())

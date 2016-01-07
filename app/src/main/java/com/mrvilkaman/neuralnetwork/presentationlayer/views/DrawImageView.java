@@ -102,6 +102,8 @@ public class DrawImageView extends View {
 		}
 		float y = height - 1;
 		canvas.drawLine(0, y, getWidth(), y, blackPaint);
+		int x = getWidth()- 1;
+		canvas.drawLine(x, 0, x, height, blackPaint);
 	}
 
 	@Override

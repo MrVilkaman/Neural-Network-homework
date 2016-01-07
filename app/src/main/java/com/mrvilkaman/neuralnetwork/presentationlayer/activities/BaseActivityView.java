@@ -2,7 +2,7 @@ package com.mrvilkaman.neuralnetwork.presentationlayer.activities;
 
 
 import com.mrvilkaman.neuralnetwork.datalayer.IStore;
-import com.mrvilkaman.neuralnetwork.presentationlayer.stubs.Toolbar;
+import com.mrvilkaman.neuralnetwork.presentationlayer.toolbar.IToolbar;
 
 public interface BaseActivityView {
 
@@ -16,7 +16,7 @@ public interface BaseActivityView {
 
     void hideKeyboard();
 
-    Toolbar getToolbar();
+    IToolbar getToolbar();
 
     IStore getStore();
 }

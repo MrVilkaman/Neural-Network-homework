@@ -95,7 +95,6 @@ public class TextGridView extends View {
 		for (int i = 0; i < numColumns; i++) {
 			for (int j = 0; j < numRows; j++) {
 
-
 				int value = cellChecked[i][j];
 				String text = String.valueOf(value);
 				float padding = blackPaint.measureText(text);
@@ -121,5 +120,7 @@ public class TextGridView extends View {
 		}
 		float y = height - 1;
 		canvas.drawLine(0, y, getWidth(), y, blackPaint);
+		int x = getWidth()- 1;
+		canvas.drawLine(x, 0, x, height, blackPaint);
 	}
 }

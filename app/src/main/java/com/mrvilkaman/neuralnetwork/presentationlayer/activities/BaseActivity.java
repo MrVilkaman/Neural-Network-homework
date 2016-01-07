@@ -11,7 +11,8 @@ import android.widget.Toast;
 import com.mrvilkaman.neuralnetwork.R;
 import com.mrvilkaman.neuralnetwork.datalayer.IStore;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFragment;
-import com.mrvilkaman.neuralnetwork.presentationlayer.stubs.Toolbar;
+import com.mrvilkaman.neuralnetwork.presentationlayer.toolbar.IToolbar;
+import com.mrvilkaman.neuralnetwork.presentationlayer.toolbar.ToolbarImpl;
 
 import java.util.List;
 
@@ -25,18 +26,22 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 	private boolean isRoot;
 	private boolean forceLoad;
 	private boolean doubleBackToExitPressedOnce;
+	private IToolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		toolbar = new ToolbarImpl(findViewById(R.id.toolbar), getHomeButtonListener());
 		FragmentManager fm = getSupportFragmentManager();
 		Fragment contentFragment = fm.findFragmentById(getContainerID());
 		if (contentFragment == null) {
 			loadRootFragment(createStartFragment(), true, true, false);
 		}
 	}
+
+	protected abstract IToolbar.OnHomeClick getHomeButtonListener();
 
 	protected abstract BaseFragment createStartFragment();
 
@@ -144,8 +149,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 	}
 
 	@Override
-	public Toolbar getToolbar() {
-		return null;
+	public IToolbar getToolbar() {
+		return toolbar;
 	}
 
 	@Override
