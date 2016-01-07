@@ -9,10 +9,14 @@ import android.widget.LinearLayout;
 import com.mrvilkaman.neuralnetwork.R;
 import com.mrvilkaman.neuralnetwork.presentationlayer.utils.Utils;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class NetImageView extends LinearLayout {
+
+	@Bind(R.id.draw)
+	DrawImageView drawImageView;
 
 	private boolean editMode;
 
@@ -57,16 +61,16 @@ public class NetImageView extends LinearLayout {
 
 	@OnClick(R.id.clear_btn)
 	void onClickClear(){
-		Utils.toast(getContext(),"Clear");
+		drawImageView.clear();
 	}
 
 	@OnClick(R.id.color_white)
 	void onClickWhite(){
-		Utils.toast(getContext(),"White");
+		drawImageView.setBlack(false);
 	}
 
 	@OnClick(R.id.color_black)
 	void onClickBlack(){
-		Utils.toast(getContext(),"Black");
+		drawImageView.setBlack(true);
 	}
 }
