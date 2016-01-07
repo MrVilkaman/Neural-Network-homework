@@ -4,32 +4,36 @@
 			  android:layout_margin="8dp"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent">
-	<RadioGroup
-		android:id="@+id/color_group"
-		android:background="#888"
-		android:orientation="vertical"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content">
-		<RadioButton
-			android:id="@+id/color_black"
-			style="@style/color_btn"
-			android:background="#000"/>
-		<RadioButton
-			android:background="#fff"
-			android:id="@+id/color_white"
-			style="@style/color_btn"/>
-	</RadioGroup>
 
-	<com.mrvilkaman.neuralnetwork.presentationlayer.views.DrawImageView
-		android:id="@+id/draw"
-		android:layout_marginLeft="8dp"
-		android:layout_marginRight="8dp"
-		android:layout_weight="1"
-		android:layout_width="200dp"
-		android:layout_height="200dp"/>
-	<Button
-		android:id="@+id/clear_btn"
-		android:text="X"
-		android:layout_width="@dimen/grid_clear_btn_size"
-		android:layout_height="@dimen/grid_clear_btn_size"/>
-</LinearLayout>
+		<RadioGroup
+			android:id="@+id/color_group"
+			android:background="#888"
+			android:orientation="vertical"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+
+			<RadioButton
+				android:id="@+id/color_black"
+				style="@style/color_btn"
+				android:background="#000"/>
+
+			<RadioButton
+				android:background="#fff"
+				android:id="@+id/color_white"
+				style="@style/color_btn"/>
+		</RadioGroup>
+
+		<com.mrvilkaman.neuralnetwork.presentationlayer.views.DrawImageView
+			android:id="@+id/draw"
+			android:layout_marginLeft="8dp"
+			android:layout_marginRight="8dp"
+			android:layout_weight="1"
+			android:layout_width="200dp"
+			android:layout_height="200dp"/>
+
+		<Button
+			android:id="@+id/clear_btn"
+			android:text="X"
+			android:layout_width="@dimen/grid_clear_btn_size"
+			android:layout_height="@dimen/grid_clear_btn_size"/>
+	</LinearLayout>

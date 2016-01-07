@@ -15,4 +15,12 @@
 		<item name="android:layout_height">@dimen/grid_color_btn_size</item>
 	</style>
 
+	<style name="Button">
+		<item name="android:textSize">@dimen/text_size</item>
+		<item name="android:layout_margin">4dp</item>
+		<item name="android:minWidth">100dp</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
 </resources>

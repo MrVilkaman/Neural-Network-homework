@@ -9,4 +9,30 @@
 		android:layout_height="wrap_content">
 	</com.mrvilkaman.neuralnetwork.presentationlayer.views.NetImageView>
 
+	<LinearLayout
+		android:gravity="center"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<Button
+			android:id="@+id/recognise_true"
+			android:text="@string/recognise_true"
+			style="@style/Button"/>
+		<Button
+			android:id="@+id/recognise"
+			android:text="@string/recognise"
+			style="@style/Button"/>
+		<Button
+			android:id="@+id/recognise_false"
+			android:text="@string/recognise_false"
+			style="@style/Button"/>
+
+	</LinearLayout>
+
+	<com.mrvilkaman.neuralnetwork.presentationlayer.views.TextGridView
+		android:layout_gravity="center"
+		android:id="@+id/draw_weight"
+		android:layout_margin="8dp"
+		android:layout_width="200dp"
+		android:layout_height="200dp"/>
 </LinearLayout>
