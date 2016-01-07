@@ -40,6 +40,7 @@ dependencies {
     //RX
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'io.reactivex:rxjava:1.1.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.3.0'
 
     //For material dialogs
     compile 'com.github.afollestad.material-dialogs:core:0.8.5.0@aar'

@@ -19,7 +19,7 @@ public abstract class BasePresenter<V extends BaseView> {
     protected void onViewBeforeDetached() {
     }
 
-    protected final <T> void subscribe(Observable<T> observable, Observer<T> observer) {
+    public final <T> void subscribe(Observable<T> observable, Observer<T> observer) {
         subscriptions.add(
                 observable
                         .subscribeOn(Schedulers.io())
@@ -28,7 +28,7 @@ public abstract class BasePresenter<V extends BaseView> {
         );
     }
 
-    protected final <T> void subscribe(Subscription observable) {
+    public final <T> void subscribe(Subscription observable) {
         subscriptions.add(observable);
     }
 

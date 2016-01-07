@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.mrvilkaman.neuralnetwork.R;
@@ -72,5 +73,15 @@ public class NetImageView extends LinearLayout {
 	@OnClick(R.id.color_black)
 	void onClickBlack(){
 		drawImageView.setBlack(true);
+	}
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		super.setEnabled(enabled);
+
+		ViewGroup viewGroup = (ViewGroup) getChildAt(0);
+		for (int i = 0; i < viewGroup.getChildCount(); i++) {
+			viewGroup.getChildAt(i).setEnabled(enabled);
+		}
 	}
 }

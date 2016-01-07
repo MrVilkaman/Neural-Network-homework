@@ -14,6 +14,8 @@ import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.presenter.B
 import com.mrvilkaman.neuralnetwork.presentationlayer.stubs.Toolbar;
 import com.mrvilkaman.neuralnetwork.presentationlayer.utils.Utils;
 
+import butterknife.ButterKnife;
+
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements BaseView, BaseActivityView {
 
     private String previousFragment;
@@ -23,6 +25,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), container, false);
         if (isWorkCall()) {
+            ButterKnife.bind(this,view);
             getPresenter().setView(this);
             onCreateView(view, savedInstanceState);
         }

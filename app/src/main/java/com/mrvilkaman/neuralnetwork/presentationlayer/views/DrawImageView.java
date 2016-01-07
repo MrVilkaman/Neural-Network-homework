@@ -121,7 +121,7 @@ public class DrawImageView extends View {
 	}
 
 	private void touchMove(int x, int y) {
-		if((x < cellChecked.length) && (y < cellChecked[x].length)){
+		if((x < cellChecked.length) && (y < cellChecked[x].length) && isEnabled()){
 
 			boolean needUpdate = cellChecked[x][y] != isBlack();
 			if (needUpdate) {

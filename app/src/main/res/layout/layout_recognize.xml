@@ -5,6 +5,7 @@
 			  android:layout_height="match_parent">
 
 	<com.mrvilkaman.neuralnetwork.presentationlayer.views.NetImageView
+		android:id="@+id/net_image_view"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
 	</com.mrvilkaman.neuralnetwork.presentationlayer.views.NetImageView>
@@ -15,6 +16,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
 		<Button
+			android:enabled="false"
 			android:id="@+id/recognise_true"
 			android:text="@string/recognise_true"
 			style="@style/Button"/>
@@ -23,6 +25,7 @@
 			android:text="@string/recognise"
 			style="@style/Button"/>
 		<Button
+			android:enabled="false"
 			android:id="@+id/recognise_false"
 			android:text="@string/recognise_false"
 			style="@style/Button"/>

@@ -9,12 +9,14 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.mrvilkaman.neuralnetwork.R;
+import com.mrvilkaman.neuralnetwork.datalayer.IStore;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFragment;
+import com.mrvilkaman.neuralnetwork.presentationlayer.stubs.Toolbar;
 
 import java.util.List;
 
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseActivityPresenter {
+public abstract class BaseActivity extends AppCompatActivity implements BaseActivityPresenter,BaseActivityView {
 
 
 	private BaseFragment nextFragment;
@@ -85,7 +87,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 		}
 	}
 
-
 	void nextFragment() {
 		if (nextFragment != null) {
 			BaseFragment currentFragment = (BaseFragment) getSupportFragmentManager().findFragmentById(getContainerID());
@@ -115,7 +116,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 		}
 	}
 
-
 	private void clearBackStack() {
 		FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -138,4 +138,38 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 
 	}
 
+	@Override
+	public IStore getStore() {
+		return null;
+	}
+
+	@Override
+	public Toolbar getToolbar() {
+		return null;
+	}
+
+	@Override
+	public void hideKeyboard() {
+
+	}
+
+	@Override
+	public void back() {
+		onBackPressed();
+	}
+
+	@Override
+	public void clearProgress() {
+
+	}
+
+	@Override
+	public void hideProgress() {
+
+	}
+
+	@Override
+	public void showProgress() {
+
+	}
 }
