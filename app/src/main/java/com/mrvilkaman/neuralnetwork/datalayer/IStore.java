@@ -1,4 +1,10 @@
 package com.mrvilkaman.neuralnetwork.datalayer;
 
-public class IStore {
+import java.util.List;
+
+import rx.Observable;
+
+public interface IStore {
+
+	Observable<List<String>> getImagesTitle();
 }

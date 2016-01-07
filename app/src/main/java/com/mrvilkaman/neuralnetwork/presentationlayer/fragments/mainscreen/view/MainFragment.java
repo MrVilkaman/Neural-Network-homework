@@ -3,12 +3,9 @@ package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.mainscreen.view
  */
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.InputType;
 import android.view.View;
-import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mrvilkaman.neuralnetwork.R;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFragment;
@@ -42,7 +39,7 @@ public class MainFragment extends BaseFragment<MainPresenter> implements MainVie
 
 	@Override
 	protected MainPresenter newPresenter() {
-		return new MainPresenterImpl();
+		return new MainPresenterImpl(getStore());
 	}
 
 	@OnClick(R.id.menu_training)
@@ -51,14 +48,12 @@ public class MainFragment extends BaseFragment<MainPresenter> implements MainVie
 	}
 
 	@Override
-	public void showDialog() {
+	public void showDialog(List<String> list) {
 		MaterialDialog.Builder builder = new MaterialDialog.Builder(getContext());
-		List<String> items = new ArrayList<>();
-		items.add("Test");
 		builder.positiveText(R.string.dialog_new)
-				.adapter(new DialogAdapter(getContext(),items),
+				.adapter(new DialogAdapter(getContext(),list),
 						(dialog, itemView, which, text) ->
-								Utils.toast(getContext(),"Clicked item " + which))
+								getPresenter().openWithChar(text))
 				.onPositive((materialDialog, dialogAction) -> showEnterDialog())
 				.show();
 	}
