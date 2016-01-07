@@ -1,18 +1,24 @@
-package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter;
+package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.trainingscreen.presenter;
 
 import com.mrvilkaman.neuralnetwork.datalayer.Constants;
+import com.mrvilkaman.neuralnetwork.datalayer.IStore;
 import com.mrvilkaman.neuralnetwork.datalayer.entity.Neuron;
 import com.mrvilkaman.neuralnetwork.domainlayer.Converters;
 
-public class RecognizePresenterImpl extends TrainingPresenter {
+public class TrainingPresenterImpl extends TrainingPresenter {
 
+	private final IStore store;
 	private Neuron currentNeuron;
 	private int[][] lastIntMatrix;
+
+	public TrainingPresenterImpl(IStore store) {
+		this.store = store;
+	}
 
 	@Override
 	protected void onViewAttached() {
 		if (currentNeuron == null) {
-			currentNeuron = new Neuron(Constants.SIZE, Constants.SIZE);
+			currentNeuron = new Neuron(Constants.SIZE, Constants.SIZE,getView().getChar());
 		}
 	}
 
@@ -34,6 +40,10 @@ public class RecognizePresenterImpl extends TrainingPresenter {
 			}
 			lastIntMatrix = null;
 			getView().drawWeight(currentNeuron.getWeight());
+
+			subscribe(store.saveWeight(currentNeuron).subscribe());
 		}
 	}
+
+
 }

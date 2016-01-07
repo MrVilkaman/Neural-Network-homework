@@ -1,7 +1,7 @@
-package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter;
+package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.trainingscreen.presenter;
 
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.presenter.BasePresenter;
-import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.view.TrainingView;
+import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.trainingscreen.view.TrainingView;
 
 public abstract class TrainingPresenter extends BasePresenter<TrainingView> {
 

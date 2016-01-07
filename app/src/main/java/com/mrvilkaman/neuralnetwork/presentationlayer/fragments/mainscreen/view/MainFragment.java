@@ -12,10 +12,8 @@ import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFr
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.mainscreen.presenter.DialogAdapter;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.mainscreen.presenter.MainPresenter;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.mainscreen.presenter.MainPresenterImpl;
-import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.view.TrainingFragment;
-import com.mrvilkaman.neuralnetwork.presentationlayer.utils.Utils;
+import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.trainingscreen.view.TrainingFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.OnClick;

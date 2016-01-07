@@ -5,14 +5,16 @@ import com.mrvilkaman.neuralnetwork.datalayer.Constants;
 
 public class Neuron {
 
+	private char name;
 	private int[][] mul; // Тут будем хранить отмасштабированные сигналы
 	private int[][] weight; // Массив для хранения весов
 	private int limit = Constants.NEURON_LIMIT; // Порог - выбран экспериментально, для быстрого обучения
 	private int sum; // Тут сохраним сумму масштабированных сигналов
 
-	public Neuron(int sizex, int sizey) { // Задаем свойства при создании объекта
+	public Neuron(int sizex, int sizey,char name) { // Задаем свойства при создании объекта
 		weight = new int[sizex][sizey]; // Определяемся с размером массива (число входов)
 		mul = new int[sizex][sizey];
+		this.name = name;
 	}
 
 	public void mulW(int[][] input) {
@@ -59,5 +61,9 @@ public class Neuron {
 
 	public int getSum() {
 		return sum;
+	}
+
+	public char getName() {
+		return name;
 	}
 }

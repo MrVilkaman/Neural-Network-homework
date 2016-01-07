@@ -1,4 +1,4 @@
-package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.view;
+package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.trainingscreen.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 import com.jakewharton.rxbinding.view.RxView;
 import com.mrvilkaman.neuralnetwork.R;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFragment;
-import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter.TrainingPresenter;
-import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter.RecognizePresenterImpl;
+import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.trainingscreen.presenter.TrainingPresenter;
+import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.trainingscreen.presenter.TrainingPresenterImpl;
 import com.mrvilkaman.neuralnetwork.presentationlayer.views.NetImageView;
 import com.mrvilkaman.neuralnetwork.presentationlayer.views.TextGridView;
 
@@ -82,7 +82,7 @@ public class TrainingFragment extends BaseFragment<TrainingPresenter> implements
 
 	@Override
 	protected TrainingPresenter newPresenter() {
-		return new RecognizePresenterImpl();
+		return new TrainingPresenterImpl(getStore());
 	}
 
 	@Override
@@ -99,4 +99,11 @@ public class TrainingFragment extends BaseFragment<TrainingPresenter> implements
 	public void showRecogniseResult(boolean rez, int sum) {
 		textResults.setText(getString((rez ? R.string.res_true : R.string.res_false), sum));
 	}
+
+	@Override
+	public char getChar() {
+		return currentChar;
+	}
+
+
 }

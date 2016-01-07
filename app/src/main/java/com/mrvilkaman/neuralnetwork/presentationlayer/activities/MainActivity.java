@@ -6,7 +6,6 @@ import com.mrvilkaman.neuralnetwork.datalayer.IStore;
 import com.mrvilkaman.neuralnetwork.datalayer.Store;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFragment;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.mainscreen.view.MainFragment;
-import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.view.TrainingFragment;
 import com.mrvilkaman.neuralnetwork.presentationlayer.toolbar.IToolbar;
 
 public class MainActivity extends BaseActivity {
