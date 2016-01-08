@@ -17,6 +17,12 @@ public class Neuron {
 		this.name = name;
 	}
 
+	public Neuron(int[][] ints, char name) {
+		this.weight = ints; // Определяемся с размером массива (число входов)
+		mul = new int[weight[0].length][weight.length];
+		this.name = name;
+	}
+
 	public void mulW(int[][] input) {
 		for (int x = 0; x < mul.length; x++) {
 			for (int y = 0; y < mul[0].length; y++) {

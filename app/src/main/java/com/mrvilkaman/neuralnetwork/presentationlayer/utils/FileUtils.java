@@ -49,14 +49,11 @@ public class FileUtils {
 			File file = new File(StorageUtils.getStoragePath(context),fileName);
 			out = new ObjectInputStream(new FileInputStream(file));
 			return (int[][]) out.readObject();
-		} catch (IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			throw new RuntimeException(e);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} finally {
 			safeClose(out);
 		}
-		return null;
 	}
 
 	private static void safeClose(Closeable out) {

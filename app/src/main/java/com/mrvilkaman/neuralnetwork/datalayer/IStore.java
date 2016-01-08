@@ -11,4 +11,6 @@ public interface IStore {
 	Observable<List<String>> getImagesTitle();
 
 	Observable<Void> saveWeight(Neuron neuron);
+
+	Observable<Neuron> getNeuron(String name);
 }

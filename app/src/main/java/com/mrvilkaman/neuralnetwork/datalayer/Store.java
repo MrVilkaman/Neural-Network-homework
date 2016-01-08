@@ -33,4 +33,14 @@ public class Store implements IStore {
 				.subscribeOn(Schedulers.io());
 
 	}
+
+	@Override
+	public Observable<Neuron> getNeuron(String name) {
+		return Observable.defer(() -> Observable.just(name))
+				.map(s -> FileUtils.getOO(context,s))
+				.onErrorReturn(throwable -> new int[Constants.SIZE][Constants.SIZE])
+				.map(ints -> new Neuron(ints, name.charAt(0)))
+				.subscribeOn(Schedulers.io());
+
+	}
 }

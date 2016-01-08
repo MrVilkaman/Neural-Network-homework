@@ -4,6 +4,11 @@ import com.mrvilkaman.neuralnetwork.datalayer.Constants;
 import com.mrvilkaman.neuralnetwork.datalayer.IStore;
 import com.mrvilkaman.neuralnetwork.datalayer.entity.Neuron;
 import com.mrvilkaman.neuralnetwork.domainlayer.Converters;
+import com.mrvilkaman.neuralnetwork.presentationlayer.utils.Utils;
+
+import rx.Scheduler;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class TrainingPresenterImpl extends TrainingPresenter {
 
@@ -18,8 +23,26 @@ public class TrainingPresenterImpl extends TrainingPresenter {
 	@Override
 	protected void onViewAttached() {
 		if (currentNeuron == null) {
-			currentNeuron = new Neuron(Constants.SIZE, Constants.SIZE,getView().getChar());
+			blockUi();
+			subscribe(store.getNeuron(String.valueOf(getView().getChar()))
+					.doOnNext(neuron -> currentNeuron = neuron)
+					.map(Neuron::getWeight)
+					.observeOn(AndroidSchedulers.mainThread())
+					.doOnNext(ints -> {
+						getView().drawWeight(ints);
+						disabledBlock();
+					})
+					.subscribe());
+
 		}
+	}
+
+	private void blockUi() {
+		Utils.toast(getContext(),"blockUi");
+	}
+
+	private void disabledBlock() {
+		Utils.toast(getContext(),"disabledBlock");
 	}
 
 	@Override

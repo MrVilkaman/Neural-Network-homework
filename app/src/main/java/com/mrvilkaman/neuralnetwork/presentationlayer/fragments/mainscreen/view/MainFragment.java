@@ -41,7 +41,7 @@ public class MainFragment extends BaseFragment<MainPresenter> implements MainVie
 	}
 
 	@OnClick(R.id.menu_training)
-	void onClickTraining(){
+	void onClickTraining() {
 		getPresenter().onClickTraining();
 	}
 
@@ -49,10 +49,15 @@ public class MainFragment extends BaseFragment<MainPresenter> implements MainVie
 	public void showDialog(List<String> list) {
 		MaterialDialog.Builder builder = new MaterialDialog.Builder(getContext());
 		builder.positiveText(R.string.dialog_new)
-				.adapter(new DialogAdapter(getContext(),list),
-						(dialog, itemView, which, text) ->
-								getPresenter().openWithChar(text))
-				.onPositive((materialDialog, dialogAction) -> showEnterDialog())
+				.adapter(new DialogAdapter(getContext(), list),
+						(dialog, itemView, which, text) -> {
+							getPresenter().openWithChar(text);
+							dialog.dismiss();
+						})
+				.onPositive((materialDialog, dialogAction) -> {
+					showEnterDialog();
+					materialDialog.dismiss();
+				})
 				.show();
 	}
 
@@ -67,6 +72,7 @@ public class MainFragment extends BaseFragment<MainPresenter> implements MainVie
 				.inputRange(1, 1)
 				.input(R.string.input_hint, R.string.input_prefill, (dialog, input) -> {
 					getPresenter().openWithChar(input);
+					dialog.dismiss();
 				})
 				.show();
 	}
