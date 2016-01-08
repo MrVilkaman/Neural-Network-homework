@@ -63,10 +63,11 @@ public class TrainingPresenterImpl extends TrainingPresenter {
 			}
 			lastIntMatrix = null;
 			getView().drawWeight(currentNeuron.getWeight());
-
-			subscribe(store.saveWeight(currentNeuron).subscribe());
 		}
 	}
 
-
+	@Override
+	public void saveNeuron() {
+		store.saveWeight(currentNeuron).subscribe();
+	}
 }

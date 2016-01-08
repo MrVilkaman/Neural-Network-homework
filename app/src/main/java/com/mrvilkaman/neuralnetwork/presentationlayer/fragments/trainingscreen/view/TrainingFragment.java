@@ -106,4 +106,9 @@ public class TrainingFragment extends BaseFragment<TrainingPresenter> implements
 	}
 
 
+	@Override
+	public void onStop() {
+		getPresenter().saveNeuron();
+		super.onStop();
+	}
 }

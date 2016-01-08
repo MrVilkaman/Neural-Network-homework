@@ -8,4 +8,6 @@ public abstract class TrainingPresenter extends BasePresenter<TrainingView> {
 	public abstract void clickRecognise();
 
 	public abstract void clickRecogniseResult(boolean val);
+
+	public abstract void saveNeuron();
 }
