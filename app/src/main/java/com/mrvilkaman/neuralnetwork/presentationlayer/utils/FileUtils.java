@@ -25,7 +25,7 @@ public class FileUtils {
 				.map(File::listFiles)
 				.flatMap(Observable::from)
 				.map(File::getName)
-				.toList()
+				.toSortedList()
 				.subscribeOn(Schedulers.io());
 	}
 

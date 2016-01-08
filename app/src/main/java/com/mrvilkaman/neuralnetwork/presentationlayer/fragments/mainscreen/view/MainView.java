@@ -10,4 +10,6 @@ public interface MainView extends BaseView {
 	void showDialog(List<String> list);
 
 	void openWithChar(char charAt);
+
+	void openRecognize();
 }

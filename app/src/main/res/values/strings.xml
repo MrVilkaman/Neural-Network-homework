@@ -9,4 +9,6 @@
 	<string name="dialog_new">Новый</string>
 	<string name="input_hint">Символ</string>
 	<string name="input_prefill"/>
+	<string name="layout_recognize_title">Распознование</string>
+	<string name="menu_recognize">Распознание</string>
 </resources>

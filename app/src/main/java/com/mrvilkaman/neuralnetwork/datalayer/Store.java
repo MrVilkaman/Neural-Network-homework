@@ -41,6 +41,14 @@ public class Store implements IStore {
 				.onErrorReturn(throwable -> new int[Constants.SIZE][Constants.SIZE])
 				.map(ints -> new Neuron(ints, name.charAt(0)))
 				.subscribeOn(Schedulers.io());
+	}
 
+	@Override
+	public Observable<List<Neuron>> getNeurons() {
+		return getImagesTitle()
+				.flatMap(Observable::from)
+				.flatMap(Store.this::getNeuron)
+				.toList()
+				.subscribeOn(Schedulers.io());
 	}
 }

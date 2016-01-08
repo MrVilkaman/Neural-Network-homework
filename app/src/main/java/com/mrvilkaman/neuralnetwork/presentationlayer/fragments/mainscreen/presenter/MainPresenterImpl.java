@@ -26,4 +26,8 @@ public class MainPresenterImpl extends MainPresenter {
 		getView().openWithChar(input.charAt(0));
 	}
 
+	@Override
+	public void onClickRecognize() {
+		getView().openRecognize();
+	}
 }

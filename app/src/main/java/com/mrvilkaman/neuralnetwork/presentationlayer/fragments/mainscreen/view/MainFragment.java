@@ -12,6 +12,7 @@ import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFr
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.mainscreen.presenter.DialogAdapter;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.mainscreen.presenter.MainPresenter;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.mainscreen.presenter.MainPresenterImpl;
+import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.view.RecognizeFragment;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.trainingscreen.view.TrainingFragment;
 
 import java.util.List;
@@ -45,6 +46,11 @@ public class MainFragment extends BaseFragment<MainPresenter> implements MainVie
 		getPresenter().onClickTraining();
 	}
 
+	@OnClick(R.id.menu_recognize)
+	void onClickRecognize() {
+		getPresenter().onClickRecognize();
+	}
+
 	@Override
 	public void showDialog(List<String> list) {
 		MaterialDialog.Builder builder = new MaterialDialog.Builder(getContext());
@@ -66,9 +72,14 @@ public class MainFragment extends BaseFragment<MainPresenter> implements MainVie
 		showFragment(TrainingFragment.open(charAt));
 	}
 
+	@Override
+	public void openRecognize() {
+		showFragment(RecognizeFragment.open());
+	}
+
 	private void showEnterDialog() {
 		MaterialDialog.Builder builder = new MaterialDialog.Builder(getContext());
-		builder.inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)
+		builder.inputType(InputType.TYPE_CLASS_TEXT )
 				.inputRange(1, 1)
 				.input(R.string.input_hint, R.string.input_prefill, (dialog, input) -> {
 					getPresenter().openWithChar(input);

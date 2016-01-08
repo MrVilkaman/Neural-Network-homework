@@ -13,4 +13,6 @@ public interface IStore {
 	Observable<Void> saveWeight(Neuron neuron);
 
 	Observable<Neuron> getNeuron(String name);
+
+	Observable<List<Neuron>> getNeurons();
 }

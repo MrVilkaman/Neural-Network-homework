@@ -102,7 +102,7 @@ public class DrawImageView extends View {
 		}
 		float y = height - 1;
 		canvas.drawLine(0, y, getWidth(), y, blackPaint);
-		int x = getWidth()- 1;
+		int x = getWidth() - 1;
 		canvas.drawLine(x, 0, x, height, blackPaint);
 	}
 
@@ -114,14 +114,14 @@ public class DrawImageView extends View {
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN:
 			case MotionEvent.ACTION_MOVE:
-				touchMove(x,y);
+				touchMove(x, y);
 				break;
 		}
 		return true;
 	}
 
 	private void touchMove(int x, int y) {
-		if((x < matrix.length) && (y < matrix[x].length) && isEnabled()){
+		if (0 <= x && (x < matrix.length) && 0 <= y  &&  (y < matrix[x].length) && isEnabled()) {
 
 			boolean needUpdate = matrix[x][y] != isBlack();
 			if (needUpdate) {
@@ -131,7 +131,7 @@ public class DrawImageView extends View {
 		}
 	}
 
-	public void clear(){
+	public void clear() {
 		calculateDimensions();
 	}
 

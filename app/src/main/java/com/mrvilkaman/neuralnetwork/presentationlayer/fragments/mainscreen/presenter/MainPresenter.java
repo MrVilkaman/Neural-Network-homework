@@ -7,4 +7,6 @@ public abstract class MainPresenter extends BasePresenter<MainView> {
 	public abstract void onClickTraining();
 
 	public abstract void openWithChar(CharSequence input);
+
+	public abstract void onClickRecognize();
 }
