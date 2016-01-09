@@ -11,9 +11,6 @@ import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFr
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter.RecognizePresenter;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.recognizescreen.presenter.RecognizePresenterImpl;
 import com.mrvilkaman.neuralnetwork.presentationlayer.views.NetImageView;
-import com.mrvilkaman.neuralnetwork.presentationlayer.views.TextGridView;
-
-import java.util.List;
 
 import butterknife.Bind;
 
@@ -58,13 +55,7 @@ public class RecognizeFragment extends BaseFragment<RecognizePresenter> implemen
 	}
 
 	@Override
-	public void printStrings(List<String> strings) {
-		StringBuilder stringBuilder = new StringBuilder();
-		for (String string : strings) {
-			stringBuilder.append(string)
-			.append('\n');
-		}
-
-		textResultFields.setText(stringBuilder.toString());
+	public void printStrings(String text) {
+		textResultFields.setText(text);
 	}
 }

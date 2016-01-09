@@ -9,5 +9,5 @@ public interface RecognizeView extends BaseView {
 
 	boolean[][] getCellMatrix();
 
-	void printStrings(List<String> strings);
+	void printStrings(String text);
 }

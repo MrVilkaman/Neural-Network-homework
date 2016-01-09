@@ -67,6 +67,14 @@ public class RecognizePresenterImpl extends RecognizePresenter {
 				.map(neuron -> String.format("%s - %d (%s)", neuron.getName(), neuron.getSum(),neuron.rez()))
 //				.map(text -> text + "\n")
 				.toList()
+				.map(strings -> {
+					StringBuilder stringBuilder = new StringBuilder();
+					for (String string : strings) {
+						stringBuilder.append(string)
+								.append('\n');
+					}
+					return stringBuilder.toString();
+				})
 				.subscribeOn(Schedulers.io())
 				.observeOn(AndroidSchedulers.mainThread())
 				.subscribe(strings -> getView().printStrings(strings)));

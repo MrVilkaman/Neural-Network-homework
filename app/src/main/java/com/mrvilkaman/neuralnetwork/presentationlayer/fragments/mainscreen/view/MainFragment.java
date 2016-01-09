@@ -1,4 +1,5 @@
-package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.mainscreen.view;/**
+package com.mrvilkaman.neuralnetwork.presentationlayer.fragments.mainscreen.view;
+/**
  * Created by Zahar on 07.01.2016.
  */
 
