@@ -23,26 +23,18 @@ public class TrainingPresenterImpl extends TrainingPresenter {
 	@Override
 	protected void onViewAttached() {
 		if (currentNeuron == null) {
-			blockUi();
+			getView().showProgress();
 			subscribe(store.getNeuron(String.valueOf(getView().getChar()))
 					.doOnNext(neuron -> currentNeuron = neuron)
 					.map(Neuron::getWeight)
 					.observeOn(AndroidSchedulers.mainThread())
 					.doOnNext(ints -> {
 						getView().drawWeight(ints);
-						disabledBlock();
+						getView().hideProgress();
 					})
 					.subscribe());
 
 		}
-	}
-
-	private void blockUi() {
-		Utils.toast(getContext(),"blockUi");
-	}
-
-	private void disabledBlock() {
-		Utils.toast(getContext(),"disabledBlock");
 	}
 
 	@Override

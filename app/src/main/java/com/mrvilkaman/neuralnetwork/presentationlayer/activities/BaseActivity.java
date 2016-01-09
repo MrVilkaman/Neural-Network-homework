@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.mrvilkaman.neuralnetwork.R;
@@ -13,6 +15,7 @@ import com.mrvilkaman.neuralnetwork.datalayer.IStore;
 import com.mrvilkaman.neuralnetwork.presentationlayer.fragments.core.view.BaseFragment;
 import com.mrvilkaman.neuralnetwork.presentationlayer.toolbar.IToolbar;
 import com.mrvilkaman.neuralnetwork.presentationlayer.toolbar.ToolbarImpl;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.util.List;
 
@@ -27,6 +30,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 	private boolean forceLoad;
 	private boolean doubleBackToExitPressedOnce;
 	private IToolbar toolbar;
+	private ProgressWheel progress;
+	private boolean inProgress;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 		if (contentFragment == null) {
 			loadRootFragment(createStartFragment(), true, true, false);
 		}
+		configureProgressBar();
+	}
+
+	private void configureProgressBar() {
+		progress = (ProgressWheel) findViewById(R.id.progress_wheel);
+		progress.setOnTouchListener((v, event) -> true);
 	}
 
 	protected abstract IToolbar.OnHomeClick getHomeButtonListener();
@@ -66,14 +77,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 
 		this.doubleBackToExitPressedOnce = true;
 		Toast.makeText(this, "Еще раз", Toast.LENGTH_SHORT).show();
-
-		new Handler().postDelayed(new Runnable() {
-
-			@Override
-			public void run() {
-				doubleBackToExitPressedOnce = false;
-			}
-		}, 1000);
+		new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 1000);
 	}
 
 	protected boolean hasChild() {
@@ -83,17 +87,21 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 
 	@Override
 	public void onBackPressed() {
-		FragmentManager supportFragmentManager = getSupportFragmentManager();
-		BaseFragment current = (BaseFragment) supportFragmentManager.findFragmentById(getContainerID());
-		if (current != null && current.getPreviousFragment() != null) {
-			supportFragmentManager.popBackStack(current.getPreviousFragment(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-			if (hasChild()) {
-				getToolbar().showBackIcon();
-			}else{
-				getToolbar().showHomeIcon();
+		if (!inProgress) {
+			hideProgress();
+
+			FragmentManager supportFragmentManager = getSupportFragmentManager();
+			BaseFragment current = (BaseFragment) supportFragmentManager.findFragmentById(getContainerID());
+			if (current != null && current.getPreviousFragment() != null) {
+				supportFragmentManager.popBackStack(current.getPreviousFragment(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				if (hasChild()) {
+					getToolbar().showBackIcon();
+				} else {
+					getToolbar().showHomeIcon();
+				}
+			} else {
+				exit();
 			}
-		} else {
-			exit();
 		}
 	}
 
@@ -172,17 +180,19 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseActi
 	}
 
 	@Override
-	public void clearProgress() {
-
+	public void showProgress() {
+		inProgress = true;
+		progress.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	public void hideProgress() {
-
+		inProgress = false;
+		progress.setVisibility(View.GONE);
 	}
 
 	@Override
-	public void showProgress() {
-
+	public void clearProgress(){
+		inProgress = false;
 	}
 }

@@ -52,4 +52,7 @@ dependencies {
 
     // Views inject
     compile 'com.jakewharton:butterknife:7.0.1'
+
+    // progress bar
+    compile 'com.pnikosis:materialish-progress:1.5'
 }
