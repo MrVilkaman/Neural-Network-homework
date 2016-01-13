@@ -68,7 +68,7 @@ public class TrainingPresenterImpl extends TrainingPresenter {
 
 	@Override
 	public void saveNeuron() {
-//		store.saveWeight(currentNeuron).subscribe();
+		store.saveWeight(currentNeuron).subscribe();
 	}
 
 	@Override
@@ -83,16 +83,16 @@ public class TrainingPresenterImpl extends TrainingPresenter {
 		List<boolean[][]> best = ge.run(list);
 
 
-//		Neuron newNeuron = new Neuron(Constants.SIZE, Constants.SIZE, 'x');
+		Neuron newNeuron = new Neuron(Constants.SIZE, Constants.SIZE, 'x');
 		for (boolean[][] booleen : best) {
 			int[][] inP = Converters.boolToInt(booleen);
 
 			currentNeuron.mulW(inP);
 			currentNeuron.sum();
-			if (!currentNeuron.rez()) {
-				currentNeuron.incW(inP);
+			if (currentNeuron.rez()) {
+				newNeuron.incW(inP);
 			} else {
-				currentNeuron.decW(inP);
+				newNeuron.decW(inP);
 			}
 //			newNeuron.mulW(inP);
 //			newNeuron.sum();
@@ -109,6 +109,7 @@ public class TrainingPresenterImpl extends TrainingPresenter {
 //				newNeuron.decW(inP);
 //			}
 		}
+		currentNeuron.addW(newNeuron);
 		getView().drawWeight(currentNeuron.getWeight());
 	}
 

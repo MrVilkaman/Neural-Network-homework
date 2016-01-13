@@ -50,6 +50,7 @@ public class GeneticEngine {
 						return lhs > rhs ? -1 : (lhs == rhs ? 0 : 1);
 					})
 					.flatMap(Observable::from)
+					.distinct()
 					.limit(imageList.size())
 					.toList()
 					.subscribe(list ->imageListParent = cloneList(list));
@@ -66,6 +67,7 @@ public class GeneticEngine {
 					return lhs > rhs ? -1 : (lhs == rhs ? 0 : 1);
 				})
 				.flatMap(Observable::from)
+				.distinct()
 				.limit(imageList.size())
 				.toList()
 				.subscribe(list ->imageListParent = cloneList(list));
