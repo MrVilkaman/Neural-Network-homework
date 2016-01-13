@@ -15,6 +15,7 @@ import com.mrvilkaman.neuralnetwork.presentationlayer.views.NetImageView;
 import com.mrvilkaman.neuralnetwork.presentationlayer.views.TextGridView;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import rx.Observable;
 
 public class TrainingFragment extends BaseFragment<TrainingPresenter> implements TrainingView {
@@ -110,5 +111,10 @@ public class TrainingFragment extends BaseFragment<TrainingPresenter> implements
 	public void onStop() {
 		getPresenter().saveNeuron();
 		super.onStop();
+	}
+
+	@OnClick (R.id.crossower)
+	void onCross(){
+		getPresenter().doCross();
 	}
 }

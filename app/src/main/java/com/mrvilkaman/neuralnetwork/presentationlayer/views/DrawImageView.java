@@ -144,6 +144,6 @@ public class DrawImageView extends View {
 	}
 
 	public boolean[][] getCellMatrix() {
-		return matrix;
+		return matrix.clone();
 	}
 }

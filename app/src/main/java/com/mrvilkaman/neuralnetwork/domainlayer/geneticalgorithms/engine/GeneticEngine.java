@@ -28,7 +28,7 @@ public class GeneticEngine {
 
 	public List<boolean[][]> run(List<boolean[][]> imageList) {
 		currentImageList = new ArrayList<>();
-		this.imageListParent = new ArrayList<>(imageList);
+		this.imageListParent = cloneList(imageList);
 
 		while (currentGeneration < generationCount) {
 
@@ -38,9 +38,21 @@ public class GeneticEngine {
 				mutation();
 			}
 
-			List<boolean[][]> tmp = imageListParent;
-			imageListParent = currentImageList;
-			currentImageList = tmp;
+//			List<boolean[][]> tmp = imageListParent;
+//			imageListParent = currentImageList;
+//			currentImageList = tmp;
+			Observable.merge(
+					Observable.from(currentImageList),
+					Observable.from(this.imageListParent))
+					.toSortedList((lh, rh) -> {
+						long lhs = fitnessFunction.run(lh);
+						long rhs = fitnessFunction.run(rh);
+						return lhs > rhs ? -1 : (lhs == rhs ? 0 : 1);
+					})
+					.flatMap(Observable::from)
+					.limit(imageList.size())
+					.toList()
+					.subscribe(list ->imageListParent = cloneList(list));
 
 			currentGeneration++;
 		}
@@ -56,10 +68,16 @@ public class GeneticEngine {
 				.flatMap(Observable::from)
 				.limit(imageList.size())
 				.toList()
-				.subscribe(list ->imageListParent = list);
+				.subscribe(list ->imageListParent = cloneList(list));
 
 
-		return imageListParent.subList(0,imageList.size());
+		return imageListParent;
+	}
+
+	public List<boolean[][]> cloneList(List<boolean[][]> list) {
+		List<boolean[][]> clone = new ArrayList<>(list.size());
+		for(boolean[][] item: list) clone.add(cloneArray(item));
+		return clone;
 	}
 
 	private void selection(){
@@ -71,7 +89,8 @@ public class GeneticEngine {
 			long fr1 = fitnessFunction.run(imageListParent.get(index1));
 			long fr2 = fitnessFunction.run(imageListParent.get(index2));
 
-			currentImageList.add(fr1 > fr2 ? imageListParent.get(index1).clone() : imageListParent.get(index2).clone());
+			boolean[][] object = fr1 > fr2 ? imageListParent.get(index1) : imageListParent.get(index2);
+			currentImageList.add(cloneArray(object));
 		}
 	} //Процедура селекци
 	private void crossing() {
@@ -93,6 +112,13 @@ public class GeneticEngine {
 				}
 			}
 		}
+	}
+
+	private boolean[][] cloneArray(boolean[][] matrix){
+		boolean [][] myInt = new boolean[matrix.length][];
+		for(int i = 0; i < matrix.length; i++)
+			myInt[i] = matrix[i].clone();
+		return myInt;
 	}
 
 	private void mutation() {

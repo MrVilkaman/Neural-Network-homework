@@ -26,7 +26,8 @@ public class GeneticEngineTest extends TestCase {
 		};
 		Neuron neuron = new Neuron(ints,'h');
 
-		GeneticEngine ge = new GeneticEngine(new Fitness(neuron));
+		Fitness fitnessFunction = new Fitness(neuron);
+		GeneticEngine ge = new GeneticEngine(fitnessFunction);
 		ge.setGenerationCount(10); //устанвливаем кол-во поколений
 		ge.setUseMutation(true); //наши геномы могут мутировать
 		ge.setMutationPercent(0.1f);

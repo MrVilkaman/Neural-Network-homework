@@ -8,6 +8,9 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Utils {
 
@@ -79,4 +82,5 @@ public class Utils {
         final Boolean[] checker = {false};
         return false;
     }
+
 }

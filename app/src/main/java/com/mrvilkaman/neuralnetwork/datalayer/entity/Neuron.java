@@ -72,4 +72,27 @@ public class Neuron {
 	public char getName() {
 		return name;
 	}
+
+
+	public void incWGen(int[][] inP) {
+		for (int x = 0; x < inP.length; x++) {
+			for (int y = 0; y < inP[0].length; y++) {
+				int i = inP[x][y];
+				if (0 < i) {
+					weight[x][y] += i;
+				}
+			}
+		}
+	}
+
+	public void decWGen(int[][] inP) {
+		for (int x = 0; x < inP.length; x++) {
+			for (int y = 0; y < inP[0].length; y++) {
+				int i = inP[x][y];
+				if (i < 0) {
+					weight[x][y] -= i;
+				}
+			}
+		}
+	}
 }

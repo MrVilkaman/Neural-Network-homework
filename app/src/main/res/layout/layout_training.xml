@@ -10,12 +10,22 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"/>
 
-	<TextView
-		android:id="@+id/text_result"
-		android:layout_gravity="center"
-		tools:text="dasda"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"/>
+	<LinearLayout
+		android:gravity="center"
+		style="@style/LL.H">
+
+		<TextView
+			android:id="@+id/text_result"
+			android:layout_gravity="center"
+			tools:text="dasda"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<Button
+			android:id="@+id/crossower"
+			android:text="C"
+			style="@style/Button"/>
+	</LinearLayout>
+
 
 	<LinearLayout
 		android:gravity="center"
@@ -36,8 +46,9 @@
 			android:id="@+id/recognise_false"
 			android:text="@string/recognise_false"
 			style="@style/Button"/>
-
 	</LinearLayout>
+
+
 
 	<com.mrvilkaman.neuralnetwork.presentationlayer.views.TextGridView
 		android:layout_gravity="center"
