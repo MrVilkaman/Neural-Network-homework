@@ -53,7 +53,9 @@ public class GeneticEngine {
 					long rhs = fitnessFunction.run(rh);
 					return lhs > rhs ? -1 : (lhs == rhs ? 0 : 1);
 				})
+				.flatMap(Observable::from)
 				.limit(imageList.size())
+				.toList()
 				.subscribe(list ->imageListParent = list);
 
 
