@@ -7,4 +7,8 @@
 	<dimen name="toolbar_layout_height">40dp</dimen>
 	<dimen name="main_text_size">16dp</dimen>
 
+	<dimen name="grid_color_btn_size">28dp</dimen>
+	<dimen name="grid_clear_btn_size">48dp</dimen>
+	<dimen name="text_size">14dp</dimen>
+	<dimen name="grid_size">160dp</dimen>
 </resources>

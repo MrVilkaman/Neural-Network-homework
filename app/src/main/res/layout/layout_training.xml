@@ -22,7 +22,7 @@
 			android:layout_height="wrap_content"/>
 		<Button
 			android:id="@+id/crossower"
-			android:text="C"
+			android:text="Обработать"
 			style="@style/Button"/>
 	</LinearLayout>
 
