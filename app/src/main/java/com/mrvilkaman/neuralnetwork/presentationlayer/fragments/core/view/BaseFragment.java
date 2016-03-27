@@ -32,7 +32,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         return view;
     }
 
-
     @Override
     public void onDestroyView() {
         getPresenter().setView(null);
